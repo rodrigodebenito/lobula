@@ -1,0 +1,17 @@
+<%
+content_for :about do
+  render :partial => "main/about", :locals => { :person => @person }
+end
+%>
+
+<%
+content_for :work do
+  render :partial => "main/work", :locals => { :projects => @projects }
+end
+%>
+
+<% if @project.nil? %>
+  <%= render "main/intro" %>
+<% else %>
+  <%= render :partial => "main/project", :locals => { :project => @project } %>
+<% end %>

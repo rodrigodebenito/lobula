@@ -1,0 +1,41 @@
+<%= form_for [:admin, @person] do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :biography %><br>
+    <%= f.text_area :biography %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :resume %><br>
+    <%= f.text_field :resume %>
+  </div>
+  <div class="field">
+    <%= f.label :bitmap %><br>
+    <%= f.file_field :bitmap %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

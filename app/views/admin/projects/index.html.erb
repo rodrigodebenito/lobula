@@ -1,0 +1,18 @@
+<h2>Project List</h2>
+
+<br>
+<%= link_to 'New Project', new_admin_project_path, class: "btn btn-primary" %>
+<br>
+
+<div class="list">
+	<% @projects.each do |project| %>
+	<article>
+		<%= render partial: "info", locals: { project: project } %>
+		<div class="actions">
+			<%= link_to 'Show', admin_project_path(project), class: "btn" %>
+			<%= link_to 'Edit', edit_admin_project_path(project), class: "btn" %>
+			<%= link_to 'Destroy', admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+		</div>
+	</article>
+	<% end %>
+</div>

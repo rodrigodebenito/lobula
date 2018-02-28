@@ -1,0 +1,12 @@
+<h2><%= project.title %></h2>
+<h4><%= raw project.summary %></h4>
+<p><%= raw project.description %></p>
+<h5><strong>Client:</strong> <%= project.client %> </h5>
+<h5><strong>Credit</strong> <%= project.credit %> </h5>
+<h5><strong>Role:</strong> <%= project.role %> </h5>
+<h5><strong>Website:</strong> <%= link_to project.website_url %> </h5>
+<h5><strong>Date:</strong> <%= project.date %> </h5>
+<h5><strong>Awards</strong> <%= project.awards %> </h5>
+<h5><strong>Slug:</strong> <%= project.slug %> </h5>
+<h5><strong>Active:</strong> <%= project.active %> </h5>
+<p><%= image_tag project.bitmap.url %></p>

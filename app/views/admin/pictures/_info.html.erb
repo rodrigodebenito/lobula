@@ -1,0 +1,11 @@
+<h4><%= picture.caption %></h4>
+<p>
+	<%= picture.credit %>
+</p>
+<p><%= picture.href %></p>
+<p>
+	<label>Weight:</label> <%= picture.weight %><br/>
+	<label>Active:</label> <%= picture.active %><br/>
+	<label>Project:</label> <%= unless picture.project.nil? then picture.project.title end %><br/>
+</p>
+<%= image_tag picture.bitmap.url %>

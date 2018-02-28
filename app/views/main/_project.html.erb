@@ -1,0 +1,51 @@
+<!-- <a id="more-projects-btn">See More Projects</a> -->
+<article id="project">
+  <div class="project-content">
+    <section class="project-body">
+      <header class="project-header">
+        <h2 class="project-title"><%= @project.title %></h2>
+        <h3 class="project-client"><%= @project.client %></h3>
+      </header>
+      <div class="project-description">
+        <%= raw @project.description %>
+        <% if project.website_url? %>
+          <a class="project-website" href="<%= @project.website_url %>" target="_blank">Visit the website &gt;</a>
+        <% end %>
+      </div>
+      <section class="side-info">
+        <% if project.role? %>
+          <h5 class="category">Role</h5>
+          <p class="project-role">
+            <%= @project.role %>
+          </p>
+        <% end %>
+        <% if project.awards? %>
+          <h5 class="category">Awards</h5>
+          <p class="project-awards">
+            <%= @project.awards %>
+          </p>
+        <% end %>
+        <% if project.credit? %>
+          <h5 class="category">Credit</h5>
+          <p class="project-credit">
+            <%= @project.credit %>
+          </p>
+        <% end %>
+      </section>
+    </section>
+    <section class="project-images">
+      <% @pictures.each do |picture| %>
+        <% if picture.href? %><a href="<%= picture.href %>" target="_blank"><% end %>
+          <figure class="project-image">
+            <img src="<%= picture.bitmap.url(:medium) %>" />
+            <figcaption class="description">
+              <span class="caption"><%= picture.caption %></span>
+              <span class="credit"><%= picture.credit %></span>
+            </figcaption>
+          </figure>
+        <% if picture.href %></a><% end %>
+      <% end %>
+    </section>
+  </div>
+</article>
+<h3 id="more-projects-title">More Projects</h3>

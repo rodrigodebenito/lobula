@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title><%= content_for?(:title) ? yield(:title) : 'LOBULA is the project portfolio by RODRIGO DE BENITO SANZ' %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Lobula is the ever-expanding catalogue of projects by media designer and developer Rodrigo de Benito Sanz' %>">
+    <meta name="keys" content="Rodrigo de Benito Sanz, design, development, user interface, ui, ux, experience, graphic, art, programmer, projects, portfolio">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:500,700" type="text/css">
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+      <section id="about">
+        <%= yield :about %>
+      </section>
+      <section id="main">
+        <nav id="nav">
+          <a class="logo" href="/"><span class="lobula">LOBULA</span> <span class="verb">means</span> <img class="animation" src="/assets/anim.gif" /></a>
+          <div class="about-btn"><a>About</a></div>
+          <div class="contact">
+            <!--<a class="link employer" href="http://www.localprojects.net" target="_blank">I <span class="highlight">work</span> in NYC.</a> -->
+            <a class="link email" href="mailto:hello@lobula.com">Say <span class="highlight">hello@lobula.com</span></a>
+            <a class="link linkedin" target="_blank" href="http://www.linkedin.com/in/rodrigodebenito">or via <span class="highlight">Linkedin</span></a>
+          </div>
+        </nav>
+        <section id="content">
+          <%= yield %>
+        </section>
+        <section id="work">
+          <%= yield :work %>
+        </section>
+        <footer id="footer">LOBULA.COM. Designed&nbsp;&amp;&nbsp;Developed&nbsp;by&nbsp;<a href="mailto:hello@lobula.com">Rodrigo&nbsp;de&nbsp;Benito&nbsp;Sanz</a>. <a href="https://github.com/theleagueof/raleway" target="_blank">Raleway&nbsp;font&nbsp;by&nbsp;Matt&nbsp;McInerney</a>.</footer>
+      </section>
+      <%= render "layouts/analytics" %>
+  </body>
+</html>

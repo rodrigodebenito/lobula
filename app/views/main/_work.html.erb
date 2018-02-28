@@ -1,0 +1,17 @@
+<div class="project-grid">
+	<% @projects.each do |project| %>
+	<a class="project-item" href="/<%= project.slug %>">
+	  <img class="project-thumbnail" src="<%= project.bitmap.url(:square) %>"/>
+  	<div class="project-label">
+  		<div class="project-letter" data-text="<%= project.title[0] %>" style="background-image:url(<%= project.bitmap.url(:square) %>)"></div>
+  		<div class="project-text">
+  			<h4 class="project-title"><%= project.title %></h4>
+  			<h5 class="project-client"><%= project.client %></h5>
+  			<p class="project-summary">
+  				<%= project.summary %>
+  			</p>
+  		</div>
+  	</div>
+	</a>
+	<% end %>
+</div>

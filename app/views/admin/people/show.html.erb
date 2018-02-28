@@ -1,0 +1,5 @@
+<article>
+  <%= render partial: "info", locals: { person: @person } %>
+  <%= link_to 'Edit', edit_admin_person_path(@person), class: "btn" %>
+  <%= link_to 'Back', admin_people_path, class: "btn" %>
+</article>

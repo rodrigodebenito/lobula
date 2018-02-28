@@ -1,0 +1,9 @@
+#!/bin/bash
+# This is a simple build script and will be executed on your CI system if
+# available.  Otherwise it will execute while your application is stopped
+# before the deploy step.  This script gets executed directly, so it
+# could be python, php, ruby, etc.
+
+# Create subfolder in data to store static assets and add symlink to public folder to reference them
+mkdir -p ${OPENSHIFT_DATA_DIR}public/uploads
+ln -sf ${OPENSHIFT_DATA_DIR}public/uploads ${OPENSHIFT_REPO_DIR}public/uploads

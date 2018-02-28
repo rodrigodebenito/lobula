@@ -1,0 +1,65 @@
+<%= form_for [:admin, @project] do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "title" %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br>
+    <%= f.text_area :summary, class: "summary" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: "description" %>
+  </div>
+  <div class="field">
+    <%= f.label :client %><br>
+    <%= f.text_field :client, class: "client" %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.text_field :credit, class: "credit" %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.text_field :role, class: "role" %>
+  </div>
+  <div class="field">
+    <%= f.label :website_url %><br>
+    <%= f.text_field :website_url, class: "url" %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date, :start_year => 2001, class: "date" %>
+  </div>
+  <div class="field">
+    <%= f.label :awards %><br>
+    <%= f.text_area :awards, class: "awards" %>
+  </div>
+  <div class="field">
+    <%= f.label :bitmap %><br>
+    <%= f.file_field :bitmap %>
+  </div>
+  <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug, class: "slug" %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active, class: "active" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

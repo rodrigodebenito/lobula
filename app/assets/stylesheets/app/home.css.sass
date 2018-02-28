@@ -1,0 +1,626 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Fonts */
+$sans-title: 'Raleway', Helvetica, sans-serif
+$sans-body: 'Lucida Grande', sans-serif
+
+/* Colors */
+$lightpink:#ff8f89
+$pink: #ff5b5b
+$blue: #3cffdc
+$black: black
+$white: white
+$lightgrey: #dadddd
+$grey: grey
+$darkgrey: #5a5656
+$charcoal: #1e2020
+
+/* Weights */
+$normal: 400
+$semibold: 600
+$bold: 700
+
+/* Sizes */
+$fontsize: 16px
+$item-border: 4px
+
+/* Mixins */
+@mixin transition($args...)
+  -moz-transition: $args
+  -webkit-transition: $args
+  -o-transition: $args
+  transition: $args
+
+@mixin scale($n)
+  transform: scale($n) /* Use scale to force gpu rendering */
+  -ms-transform: scale($n) /* IE 9 */
+  -moz-transform: scale($n) /* Firefox */
+  -webkit-transform: scale($n) /* Safari and Chrome */
+  -o-transform: scale($n) /* Opera */
+
+@mixin columns($count, $gap)
+  -webkit-column-count: $count
+  -moz-column-count: $count
+  column-count: $count
+  -webkit-column-gap: $gap
+  -moz-column-gap: $gap
+  column-gap: $gap
+
+
+/* Reset */
+
+*, *:before, *:after
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+body
+  font-size: $fontsize
+  font-family: $sans-title
+  font-weight: $normal
+  color: $black
+  background: $charcoal
+
+a
+  color: inherit
+  cursor: pointer
+  text-decoration: none
+  @include transition(color 0.5s)
+
+  &:hover
+    text-decoration: none
+    background: none
+    color: $blue
+
+  &:visited
+    color: inherit
+
+p, h1, h2, h3, h4, h5
+  font-family: inherit
+  line-height: inherit
+
+section
+  margin: 0
+
+main
+  background: transparent
+
+ul
+  padding-left: 20px
+
+#main
+  margin: auto
+  padding: 0
+  background: $charcoal
+  overflow-x: hidden
+
+#content
+  color: $darkgrey
+  font-weight: $normal
+  line-height: 1.5
+  font-size: 1em
+
+#nav
+  overflow: hidden
+  z-index: 1000
+  font-family: $sans-title
+  padding-top: 1em
+  line-height: 37px
+  font-weight: $semibold
+
+  .logo
+    color: $white
+    font-weight: $normal
+    font-size: 1em
+    float: left
+
+    .lobula
+      font-weight: $semibold
+      font-size: 0.9em
+
+    .verb
+      font-size: 0.75em
+
+    .animation
+      vertical-align: text-bottom
+      display: inline-block
+
+  .contact
+    font-family: $sans-title
+    color: $grey
+    height: 37px
+    font-size: 0.8em
+
+    a:hover .highlight
+      color: inherit
+
+    .highlight
+      color: $lightgrey
+
+  .about-btn
+    float: right
+    color: $white
+    text-transform: uppercase
+    font-size: 0.8em
+    padding-left: 1em
+    border-left: 1px solid $darkgrey
+    margin-left: 1em
+
+#introduction
+  z-index: 2
+  padding: 2em 0
+  color: $darkgrey
+  width: 25em
+  font-weight: $normal
+  line-height: 1.1
+
+  .title
+    font-size: 1.2em
+    margin: 1em 0
+    text-transform: uppercase
+    font-family: $sans-title
+    font-weight: $bold
+
+#about
+  border-bottom: 2px solid $pink
+  line-height: 1.5em
+  font-size: 0.9em
+  background: transparent
+  overflow: hidden
+  position: relative
+  z-index: 10
+  text-align: center
+  width: 100%
+  height: 0
+
+  .about-wrapper
+    width: 100%
+    height: auto
+    padding: 3em 0
+    background: url('/assets/about_bg.jpg') $lightpink bottom repeat-x
+
+  .about-person
+    margin: 0 auto
+    text-align: left
+    position: relative
+    font-weight: $semibold
+
+    .about-title
+      text-align: left
+      text-transform: uppercase
+      color: $white
+      margin-bottom: 1em
+      margin-top: 0
+
+    .about-biography
+      opacity: 0.8
+      width: 100%
+      overflow: auto
+      display: inline-block
+      text-align: left
+
+      p
+        font-size: 0.9em
+        margin-top: 0
+
+    .about-photo
+      margin-right: 2em
+      float: left
+      margin-bottom: 1em
+      vertical-align: top
+
+    .close-btn
+      float: right
+      font-size: 3em
+      font-weight: 300
+      color: white
+      position: absolute
+      top: -20px
+      right: 30px
+
+#work
+  position: relative
+  z-index: 10
+  overflow: auto
+  width: 100%
+  padding: 0
+
+  .project-grid
+    width: 100%
+    margin: auto
+
+    .project-item
+      display: block
+      float: left
+      text-align: left
+      position: relative
+      overflow: hidden
+      margin: 0
+      border: $item-border solid $charcoal
+      background: $white
+      -webkit-transform: translateZ(0) /* Fix rendering bug on chrome */
+
+      &:hover
+        .project-thumbnail
+          -webkit-filter: blur(0)
+          border-width: 0.3em
+          opacity: 1
+
+        .project-label
+          opacity: 0
+
+      .project-thumbnail
+        -webkit-filter: blur(5px)
+        display: block
+        width: 100%
+        height: auto
+        opacity: 0.3
+        border: 0 solid $blue
+        @include transition(border 0.3s, opacity 0.5s)
+
+      .project-label
+        display: block
+        position: absolute
+        padding: 2% 10%
+        top: 0
+        left: 0
+        width: 100%
+        height: auto
+        text-align: left
+        font-family: $sans-title
+        @include transition(opacity 0.5s)
+
+        .project-letter
+          font-weight: $bold
+          margin-left: -0.06em
+          margin-top: 0.15em
+          background-color: transparent
+          -webkit-text-fill-color: transparent
+          text-fill-color: transparent
+          -webkit-background-clip: text
+          background-clip: text
+
+
+          &:before
+            content: attr(data-text)
+            line-height: 0.8
+
+          svg
+            height: 1em
+            width: 1.5em
+
+            text
+              font-size: 1em
+
+        .project-text
+          display: block
+          margin-top: 5%
+          color: $black
+
+          .project-title
+            font-family: inherit
+            font-weight: $bold
+            text-transform: uppercase
+
+          .project-client
+            font-family: inherit
+            line-height: 1.3
+            font-weight: $semibold
+            text-transform: uppercase
+
+          .project-summary
+            font-family: inherit
+            font-weight: $normal
+
+#footer
+  color: $darkgrey
+  font-size: 0.75em
+  padding: 2em 0
+  text-align: right
+  font-weight: $semibold
+
+  a:hover
+    color: $grey
+
+#more-projects-btn
+  float: right
+  text-transform: uppercase
+  font-weight: 700
+  font-size: 0.9em
+  margin: 1em 0
+
+#more-projects-title
+  color: $darkgrey
+  text-transform: uppercase
+  font-size: 0.9em
+  font-weight: $semibold
+  padding-top: 1em
+  text-indent: $item-border
+
+#project
+  background: $lightgrey url("/assets/project_bg_top.png") repeat-x
+  border: 0
+  padding: 0
+  margin: 1.5em $item-border 0 $item-border
+  overflow: auto
+  border: $item-border solid $blue
+
+  .project-content
+    width: 100%
+    position: relative
+    float: left
+    line-height: 1.5
+
+    .project-body
+      color: $black
+      position: absolute
+      font-family: $sans-title
+
+      .project-header
+
+        .project-title
+          text-transform: uppercase
+          font-size: 2.1em
+          font-weight: $bold
+          line-height: 1em
+          margin-top: 0
+
+        .project-client
+          font-weight: $bold
+          text-transform: uppercase
+          font-size: 0.9em
+          color: $black
+          margin: 0
+
+
+      .project-description
+        line-height: 1.5em
+        font-size: 0.9em
+        letter-spacing: 0px
+        margin-top: 1em
+        margin-bottom: 3em
+
+      .project-website
+        display: block
+        font-weight: bold
+        margin: 2em 0
+        text-transform: uppercase
+        font-size: 0.8em
+
+        &:hover
+          color: grey
+
+      .side-info
+
+        .project-role
+          font-size: 0.9em
+          line-height: 1.4em
+          margin-bottom: 3em
+
+        .project-awards
+          font-size: 0.9em
+          line-height: 1.4em
+          margin-bottom: 3em
+
+        .category
+          text-transform: uppercase
+          color: $black
+          border-top: 3px solid $blue
+          line-height: 1em
+          overflow: hidden
+          margin: 0
+          padding: 0.7em 0
+          font-size: 0.9em
+          font-weight: 700
+
+    .project-images
+      float: left
+
+      .project-image
+        border: 1px solid $lightgrey
+        display: block
+        margin-bottom: 1em
+        width: 100%
+        margin-left: 0
+        margin-right: 0
+        height: auto
+
+        .description
+          text-align: right
+          font-size: 0.8em
+          margin-top: 0.5em
+          color: #777
+
+// USER VALIDATION
+
+.new_user
+  label, input[type="submit"]
+    margin-top: 1em
+    font-size: 0.8em
+    text-transform: uppercase
+    font-weight: $semibold
+
+  input[type="submit"]
+    margin-top: 3em
+
+
+// MEDIA QUERIES
+
+@mixin style-grid($block-number, $block-width: 350px)
+
+  $letter-size: 9em
+  $title-size: 1.2em
+  $client-size: 0.85em
+  $summary-size: 0.85em
+  $project-body-width: $block-width*$block-number*0.33
+  $project-image-margin: $block-width*$block-number*0.4
+  $project-body-position: absolute
+  $project-width: $block-width*$block-number - 8px
+
+  @if $block-width < 350px
+    $letter-size: 7em
+    $title-size: 1em
+    $client-size: 0.75em
+    $summary-size: 0.8em
+
+  @if $project-body-width < 250px
+    $project-body-position: relative
+    $project-body-width: $block-width*$block-number*0.8
+    $project-image-margin: 0
+    $project-font-size: 0.9em
+
+  #main
+    width: $block-width*$block-number
+
+  #work
+    .project-item
+      width: $block-width
+
+    .project-letter
+      font-size: $letter-size
+
+    .project-title
+      font-size: $title-size
+
+    .project-client
+      font-size: $client-size
+
+    .project-summary
+      font-size: $summary-size
+
+  #project
+    width: $project-width
+
+    .project-content
+      padding: $project-width*0.05
+
+      .project-body
+        position: $project-body-position
+        width: $project-body-width
+        margin-bottom: $project-width*0.05
+
+      .project-images
+        margin-left: $project-image-margin
+
+@media (max-width: 380px)
+
+  $block: 300px
+  @include style-grid(1, $block)
+
+  #main
+    width: 100%
+    padding: 0 15px
+
+  #project
+    margin: 20px -20px
+    width: auto
+
+    .project-content
+      .project-body
+        width: auto
+
+        .project-header
+          .project-title
+            text-align: center
+            margin-top: 0.3em
+
+
+  #content
+    padding: 4px
+
+  #work
+    .project-item
+      width: 100%
+
+  .contact
+    float: left
+
+  .about-person
+    width: 100%
+    padding: 0 30px
+
+  .about-photo
+    display: none
+
+  #introduction
+    font-size: 0.9em
+
+@media (min-width: 380px)
+
+  $block: 350px
+  @include style-grid(1, $block)
+
+  .contact
+    float: left
+
+  .about-photo
+    display: none
+
+  .about-person
+    width: 100%
+    padding: 0 30px
+
+@media (min-width: 640px)
+
+  $block: 300px
+  @include style-grid(2, $block)
+
+  .contact
+    float: right
+
+  .about-photo
+    display: inline-block
+
+  .about-person
+    width: $block*2
+
+@media (min-width: 768px)
+
+  $block: 350px
+  @include style-grid(2, $block)
+
+  .about-photo
+    display: inline-block
+
+  .about-person
+    width: $block*2
+
+    .about-biography
+      @include columns(1, 0)
+
+@media (min-width: 960px)
+
+  $block: 300px
+  @include style-grid(3, $block)
+
+  .about-photo
+    display: inline-block
+
+  .about-person
+    width: $block*3
+
+    .about-biography
+      @include columns(2, 3em)
+
+@media (min-width: 1280px)
+
+  $block: 300px
+  @include style-grid(4, $block)
+
+  .about-photo
+    display: inline-block
+
+  .about-person
+    width: $block*3
+
+@media (min-width: 1440px)
+
+  $block: 350px
+  @include style-grid(4, $block)
+
+  .about-photo
+    display: inline-block
+
+  .about-person
+    width: $block*3

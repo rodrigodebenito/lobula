@@ -1,0 +1,44 @@
+<%= form_for [:admin, @picture] do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %><br>
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.number_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :project %><br>
+    <%= f.select :project_id, Project.all.collect {|p| [p.title, p.id] } %>
+  </div>
+  <div class="field">
+     <%= f.file_field :bitmap %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active, class: "active" %>
+  </div>
+  <div class="field">
+    <%= f.label :href %><br>
+    <%= f.text_field :href %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

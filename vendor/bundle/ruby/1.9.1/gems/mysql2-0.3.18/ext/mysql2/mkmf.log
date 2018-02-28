@@ -1,0 +1,206 @@
+have_header: checking for ruby/thread.h... -------------------- no
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -E -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC  conftest.c -o conftest.i"
+conftest.c:3:25: error: ruby/thread.h: No such file or directory
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- yes
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:4: error: 'rb_wait_for_single_fd' undeclared (first use in this function)
+conftest.c:4: error: (Each undeclared identifier is reported only once
+conftest.c:4: error: for each function it appears in.)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:4: warning: implicit declaration of function 'rb_wait_for_single_fd'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { rb_wait_for_single_fd(); return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:4: error: 'rb_intern3' undeclared (first use in this function)
+conftest.c:4: error: (Each undeclared identifier is reported only once
+conftest.c:4: error: for each function it appears in.)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I.    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64   -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:4: warning: implicit declaration of function 'rb_intern3'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: int t() { rb_intern3(); return 0; }
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+/* end */
+
+--------------------
+
+have_header: checking for mysql.h... -------------------- yes
+
+"gcc -E -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I. -I/usr/include/mysql    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+/* end */
+
+--------------------
+
+have_header: checking for errmsg.h... -------------------- yes
+
+"gcc -E -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I. -I/usr/include/mysql    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <errmsg.h>
+/* end */
+
+--------------------
+
+have_header: checking for mysqld_error.h... -------------------- yes
+
+"gcc -E -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I. -I/usr/include/mysql    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysqld_error.h>
+/* end */
+
+--------------------
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I. -I/usr/include/mysql    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64  -rdynamic -L/usr/lib64/mysql -lmysqlclient_r -lz -lpthread -lcrypt -lnsl -lm -lpthread -lssl -lcrypto  -lruby  -Wall -funroll-loops -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"gcc -o conftest -I/opt/rh/ruby193/root/usr/include/x86_64-linux -I/opt/rh/ruby193/root/usr/include/ruby/backward -I/opt/rh/ruby193/root/usr/include -I. -I/usr/include/mysql    -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -mtune=generic -fPIC -Wall -funroll-loops conftest.c  -L. -L/opt/rh/ruby193/root/usr/lib64 -L. -rdynamic -Wl,-export-dynamic  -m64  -rdynamic -L/usr/lib64/mysql -lmysqlclient_r -lz -lpthread -lcrypt -lnsl -lm -lpthread -lssl -lcrypto  -lruby  -Wl,-rpath,/usr/lib64/mysql -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+

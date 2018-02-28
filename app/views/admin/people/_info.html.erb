@@ -1,0 +1,6 @@
+<h2><%= person.name %></h2>
+<h4><%= raw person.summary %></h4>
+<p><%= raw person.biography %></p>
+<a href="mailto:<%= person.email %>"><%= person.email %></a>
+<a href="<%= person.resume %>" target="_blank"><%= person.resume %></a>
+<p><%= image_tag person.bitmap.url %></p>
